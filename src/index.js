@@ -1,17 +1,53 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { createRoot } from 'react-dom/client'
+import './styles.css'
+import App from './App'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { GlobalStyles } from '@mui/material';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+function createMarginStyleOverrides() {
+    return {
+        styleOverrides: {
+            root: {
+                margin: '10px',
+            },
+        },
+    };
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// Create a theme
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: '#1976D2',
+        },
+        secondary: {
+            main: '#FFFFFF',
+        },
+    },
+    spacing: 10,
+    components: {
+        MuiButton: createMarginStyleOverrides(),
+        MuiTextField: createMarginStyleOverrides(),
+        MuiFormControl: createMarginStyleOverrides(),
+        MuiFormLabel: createMarginStyleOverrides(),
+        MuiInput: createMarginStyleOverrides(),
+        MuiInputLabel: createMarginStyleOverrides(),
+        MuiSlider: createMarginStyleOverrides(),
+        MuiToggleButton: createMarginStyleOverrides(),
+        MuiToggleButtonGroup: createMarginStyleOverrides(),
+        MuiRadio: createMarginStyleOverrides(),
+        MuiCheckbox: createMarginStyleOverrides(),
+        MuiFormControlLabel: createMarginStyleOverrides(),
+        MuiSelect: createMarginStyleOverrides(),
+
+    },
+
+}
+)
+
+createRoot(document.getElementById('root')).render(
+    <ThemeProvider theme={theme}>
+
+        <App />
+    </ThemeProvider>
+)
