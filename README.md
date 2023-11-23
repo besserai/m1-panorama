@@ -1,4 +1,4 @@
-[> Check the live project <](m1-panorama.vercel.app)
+[> Check the live project <](https://m1-panorama.vercel.app)
 
 # M2 Panorama Stitching WIP
 
